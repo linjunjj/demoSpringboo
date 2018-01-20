@@ -70,7 +70,7 @@ public class JwtTokenUtil {
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 //        authorities.add( new GrantedAuthorityImpl("ROLE_ADMIN") );
 //        authorities.add( new GrantedAuthorityImpl(claims.get(AUTHORITIES_KEY).toString().split(",")) );
-           authorities.add(new SimpleGrantedAuthority("admin"));
+           authorities.add(new SimpleGrantedAuthority(claims.get(AUTHORITIES_KEY).toString()));
 //        Collection<? extends GrantedAuthority> authorities =
 //                Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))         //获取用户权限字符串
 //                        .map(SimpleGrantedAuthority::new)

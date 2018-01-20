@@ -34,6 +34,8 @@ public class LoginController {
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password, HttpServletResponse httpResponse) throws Exception {
         //通过用户名和密码创建一个 Authentication 认证对象，实现类为 UsernamePasswordAuthenticationToken
+
+
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,password);
         //如果认证对象不为空
         if (Objects.nonNull(authenticationToken)){

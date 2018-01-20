@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .userDetailsService(userDetailsService)
                 //设置密码加密
                 .passwordEncoder(passwordEncoder());
+        auth.inMemoryAuthentication().withUser("admin").password("root123").roles("ADMIN");
     }
 
     @Override
@@ -51,10 +52,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 //允许所有用户访问首页 与 登录
                 .antMatchers("/", "/auth/login").permitAll()
+                .antMatchers("/admin/**").access("hasRole('usesr')")
                 //其它任何请求都要经过认证通过
                 .anyRequest().authenticated()
                 //用户页面需要用户权限
-                .antMatchers("/userpage").hasAnyRole("amin")
+                .antMatchers("/userpage").hasAnyRole("us1er")
                 .and()
                 //设置登出
                 .logout().permitAll();
